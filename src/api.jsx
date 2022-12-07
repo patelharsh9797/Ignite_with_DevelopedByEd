@@ -1,5 +1,5 @@
 // TODO: ApiKey
-const apiKey = import.meta.env.VITE_API_KEY;
+const apiKey = import.meta.env.VITE_RAWG_API_KEY;
 
 // TODO Base URL
 const base_url = "https://api.rawg.io/api/";
@@ -42,3 +42,10 @@ export const ApiKey = () => `${apiKey}`;
 export const popularGamesURL = () => `${base_url}${popular_games}`;
 export const upcomingGamesURL = () => `${base_url}${upcoming_games}`;
 export const newGamesURL = () => `${base_url}${new_games}`;
+
+// TODO Games Details with screenShot
+export const gameDetailsURL = (game_id) =>
+  `${base_url}games/${game_id}?key=${apiKey}`;
+
+export const gameScreenshotURL = (game_id) =>
+  `${base_url}games/${game_id}/screenshots?key=${apiKey}`;
