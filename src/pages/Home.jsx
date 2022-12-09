@@ -8,6 +8,7 @@ import { motion } from "framer-motion";
 
 // TODO Components
 import Game from "../components/Game";
+import GameDetails from "../components/GameDetails";
 
 const Home = () => {
   // FETCH GAMES
@@ -23,6 +24,7 @@ const Home = () => {
 
   return (
     <GameList>
+      <GameDetails />
       <h2>Upcomming Games</h2>
       <Games>
         {upcoming.map((game) => (
