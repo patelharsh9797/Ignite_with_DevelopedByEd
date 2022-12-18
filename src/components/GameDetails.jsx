@@ -1,14 +1,24 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
-
+import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const GameDetails = () => {
+  const history = useNavigate();
+
   const { game, screen, isLoading } = useSelector((state) => state.detail);
+
+  const exitDetailHandler = (e) => {
+    const element = e.target;
+    if (element.classList.contains("dropShadow")) {
+      document.body.style.overflow = "auto";
+      history("/");
+    }
+  };
   return (
     <>
       {!isLoading && (
-        <CardShadow>
+        <CardShadow className="dropShadow" onClick={exitDetailHandler}>
           <Detail>
             <Stats>
               <div className="rating">
@@ -55,6 +65,7 @@ const CardShadow = styled(motion.div)`
     width: 0.5rem;
   }
   &::-webkit-scrollbar-thumb {
+    border-radius: 5px;
     background: #ff7676;
   }
   &::-webkit-scrollbar-track {
