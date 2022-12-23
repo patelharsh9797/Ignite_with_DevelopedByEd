@@ -10,6 +10,8 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 
 const Game = ({ name, released, image, id }) => {
+  // const stringPathID = id.toString();  //sometimes id gives value in number
+
   const dispatch = useDispatch();
 
   const loadDetailHandler = () => {
@@ -18,11 +20,15 @@ const Game = ({ name, released, image, id }) => {
   };
 
   return (
-    <StyledGame onClick={loadDetailHandler}>
+    <StyledGame layoutId={id} onClick={loadDetailHandler}>
       <Link to={`/game/${id}`}>
-        <h3>{name}</h3>
+        <motion.h3 layoutId={`title ${id}`}>{name}</motion.h3>
         <p>{released}</p>
-        <img src={smallImage(image, 640)} alt={name} />
+        <motion.img
+          layoutId={`image ${id}`}
+          src={smallImage(image, 640)}
+          alt={name}
+        />
       </Link>
     </StyledGame>
   );
