@@ -12,6 +12,10 @@ import nintendo from "../assets/img/nintendo.svg";
 import apple from "../assets/img/apple.svg";
 import gamepad from "../assets/img/gamepad.svg";
 
+// star images
+import starEmpty from "../assets/img/star-empty.png";
+import starFull from "../assets/img/star-full.png";
+
 const GameDetails = ({ pathID }) => {
   const history = useNavigate();
 
@@ -25,6 +29,21 @@ const GameDetails = ({ pathID }) => {
       document.body.style.overflow = "auto";
       history("/");
     }
+  };
+
+  // TODO rating stars
+  const getStars = () => {
+    let stars = [];
+    const rating = Math.floor(game.rating);
+
+    for (let i = 1; i <= 5; i++) {
+      if (i <= rating) {
+        stars.push(<img src={starFull} key={i} alt="star Full"></img>);
+      } else {
+        stars.push(<img src={starEmpty} key={i} alt="star empty"></img>);
+      }
+    }
+    return stars;
   };
 
   // TODO Platform images
@@ -53,7 +72,8 @@ const GameDetails = ({ pathID }) => {
             <Stats>
               <div className="rating">
                 <motion.h3 layoutId={`title ${pathID}`}>{game.name}</motion.h3>
-                <p>Ratings : {game.rating}</p>
+                <p>Ratings : </p>
+                {getStars()}
               </div>
               <Info>
                 <h3>Platforms</h3>
@@ -133,6 +153,11 @@ const Stats = styled(motion.div)`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  img {
+    width: 2rem;
+    height: 2rem;
+    display: inline;
+  }
 `;
 const Info = styled(motion.div)`
   text-align: center;
