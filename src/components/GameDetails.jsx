@@ -4,11 +4,21 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { smallImage } from "../utils";
 
+// TODO images
+import playstation from "../assets/img/playstation.svg";
+import steam from "../assets/img/steam.svg";
+import xbox from "../assets/img/xbox.svg";
+import nintendo from "../assets/img/nintendo.svg";
+import apple from "../assets/img/apple.svg";
+import gamepad from "../assets/img/gamepad.svg";
+
 const GameDetails = ({ pathID }) => {
   const history = useNavigate();
 
+  // Data
   const { game, screen, isLoading } = useSelector((state) => state.detail);
 
+  // exit handler for scrollBar and close detail box
   const exitDetailHandler = (e) => {
     const element = e.target;
     if (element.classList.contains("dropShadow")) {
@@ -16,6 +26,25 @@ const GameDetails = ({ pathID }) => {
       history("/");
     }
   };
+
+  // TODO Platform images
+  const getPlatform = (platform) => {
+    switch (platform) {
+      case "PlayStation 4":
+        return playstation;
+      case "Xbox One":
+        return xbox;
+      case "PC":
+        return steam;
+      case "Nintendo Switch":
+        return nintendo;
+      case "iOS":
+        return apple;
+      default:
+        return gamepad;
+    }
+  };
+
   return (
     <>
       {!isLoading && (
@@ -30,7 +59,11 @@ const GameDetails = ({ pathID }) => {
                 <h3>Platforms</h3>
                 <Platforms>
                   {game.platforms.map((data) => (
-                    <h3 key={data.platform.id}>{data.platform.name}</h3>
+                    <img
+                      key={data.platform.id}
+                      src={getPlatform(data.platform.name)}
+                      alt={data.platform.name}
+                    ></img>
                   ))}
                 </Platforms>
               </Info>
