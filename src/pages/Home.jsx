@@ -34,6 +34,25 @@ const Home = () => {
           {pathID && <GameDetails pathID={pathID} />}
         </AnimatePresence>
 
+        {searched.length ? (
+          <div className="searched">
+            <h2>Searched Games</h2>
+            <Games>
+              {searched.map((game) => (
+                <Game
+                  name={game.name}
+                  released={game.released}
+                  id={game.id}
+                  key={game.id}
+                  image={game.background_image}
+                />
+              ))}
+            </Games>
+          </div>
+        ) : (
+          ""
+        )}
+
         <h2>Upcoming Games</h2>
         <Games>
           {upcoming.map((game) => (
@@ -46,6 +65,7 @@ const Home = () => {
             />
           ))}
         </Games>
+
         <h2>Popular Games</h2>
         <Games>
           {popular.map((game) => (
@@ -58,6 +78,7 @@ const Home = () => {
             />
           ))}
         </Games>
+
         <h2>New Games</h2>
         <Games>
           {newGames.map((game) => (

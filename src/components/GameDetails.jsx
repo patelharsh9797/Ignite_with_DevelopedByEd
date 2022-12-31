@@ -183,4 +183,5 @@ const Media = styled(motion.div)`
 const Description = styled(motion.div)`
   margin-block: 5rem;
 `;
+
 export default GameDetails;
