@@ -133,6 +133,17 @@ const CardShadow = styled(motion.div)`
   &::-webkit-scrollbar-track {
     background: white;
   }
+
+  .gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    img {
+      border-radius: 1rem;
+      box-shadow: 0 0 10px rgb(0 0 0/0.2);
+    }
+  }
 `;
 
 const Detail = styled(motion.div)`
@@ -147,6 +158,12 @@ const Detail = styled(motion.div)`
   img {
     width: 100%;
   }
+
+  @media (max-width: 50em) {
+    width: min(100%, 90vw);
+    padding: 1rem;
+    left: 5%;
+  }
 `;
 
 const Stats = styled(motion.div)`
@@ -157,6 +174,11 @@ const Stats = styled(motion.div)`
     width: 2rem;
     height: 2rem;
     display: inline;
+  }
+
+  @media (max-width: 50em) {
+    flex-direction: column;
+    text-align: center;
   }
 `;
 const Info = styled(motion.div)`
@@ -169,6 +191,15 @@ const Platforms = styled(motion.div)`
   img {
     margin-left: 3rem;
   }
+
+  @media (max-width: 50em) {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    img {
+      margin: 0;
+    }
+  }
 `;
 
 const Media = styled(motion.div)`
@@ -177,6 +208,12 @@ const Media = styled(motion.div)`
   img {
     width: 100%;
     border-radius: 3rem;
+  }
+
+  @media (max-width: 50em) {
+    img {
+      border-radius: 1.5rem;
+    }
   }
 `;
 

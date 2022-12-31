@@ -65,7 +65,7 @@ const StyledNav = styled(motion.nav)`
     align-items: center;
   }
   input {
-    width: 30%;
+    width: min(30rem, 50vw);
     font-family: "Montserrat", sans-serif;
     font-size: 1.5rem;
     font-weight: bold;
@@ -83,6 +83,18 @@ const StyledNav = styled(motion.nav)`
     color: #fff;
     background-color: #ff7676;
   }
+
+  @media (max-width: 50em) {
+    padding: 1rem;
+
+    input {
+      width: min(100%, 60vw);
+      font-size: 1rem;
+    }
+    button {
+      font-size: 1rem;
+    }
+  }
 `;
 
 const Logo = styled(motion.div)`
@@ -94,4 +106,5 @@ const Logo = styled(motion.div)`
     height: 2rem;
   }
 `;
+
 export default Nav;

@@ -30,8 +30,8 @@ const Home = () => {
   );
 
   return (
-    <GameList variants={fadeIn} initial="hidden" animate="show">
-      <AnimateSharedLayout type="crossfade">
+    <GameList variants={fadeIn} initial="hidden" animate="show" exit="exit">
+      <AnimateSharedLayout type="crossfade" exitBeforeEnter>
         <AnimatePresence>
           {pathID && <GameDetails pathID={pathID} />}
         </AnimatePresence>
@@ -103,6 +103,12 @@ const GameList = styled(motion.div)`
   h2 {
     padding-block: 3rem;
   }
+  @media (max-width: 50em) {
+    padding-inline: 1rem;
+    h2 {
+      padding-block: 2rem;
+    }
+  }
 `;
 const Games = styled(motion.div)`
   min-height: 80vh;
@@ -110,6 +116,10 @@ const Games = styled(motion.div)`
   grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
   grid-column-gap: 3rem;
   grid-row-gap: 5rem;
+
+  @media (max-width: 50em) {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  }
 `;
 
 export default Home;
