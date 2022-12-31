@@ -1,16 +1,18 @@
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 
+// TODO Redux
+import { useDispatch, useSelector } from "react-redux";
 import { loadGames } from "../actions/gamesAction";
-
-//TODO Styling and animations
-import styled from "styled-components";
-import { motion, AnimatePresence, AnimateSharedLayout } from "framer-motion";
 
 // TODO Components
 import Game from "../components/Game";
 import GameDetails from "../components/GameDetails";
+
+//TODO Styling and animations
+import styled from "styled-components";
+import { motion, AnimatePresence, AnimateSharedLayout } from "framer-motion";
+import { fadeIn } from "../animation";
 
 const Home = () => {
   const location = useLocation();
@@ -28,7 +30,7 @@ const Home = () => {
   );
 
   return (
-    <GameList>
+    <GameList variants={fadeIn} initial="hidden" animate="show">
       <AnimateSharedLayout type="crossfade">
         <AnimatePresence>
           {pathID && <GameDetails pathID={pathID} />}

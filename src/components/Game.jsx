@@ -8,6 +8,7 @@ import { loadDetail } from "../actions/detailAction";
 // TODO Styling and Animation
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import { popUp } from "../animation";
 
 const Game = ({ name, released, image, id }) => {
   // const stringPathID = id.toString();  //sometimes id gives value in number
@@ -20,7 +21,13 @@ const Game = ({ name, released, image, id }) => {
   };
 
   return (
-    <StyledGame layoutId={id} onClick={loadDetailHandler}>
+    <StyledGame
+      variants={popUp}
+      initial="hidden"
+      animate="show"
+      layoutId={id}
+      onClick={loadDetailHandler}
+    >
       <Link to={`/game/${id}`}>
         <motion.h3 layoutId={`title ${id}`}>{name}</motion.h3>
         <p>{released}</p>
