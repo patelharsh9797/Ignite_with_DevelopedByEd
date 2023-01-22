@@ -11,7 +11,12 @@ import GameDetails from "../components/GameDetails";
 
 //TODO Styling and animations
 import styled from "styled-components";
-import { motion, AnimatePresence, AnimateSharedLayout } from "framer-motion";
+import {
+  motion,
+  AnimatePresence,
+  AnimateSharedLayout,
+  LayoutGroup,
+} from "framer-motion";
 import { fadeIn } from "../animation";
 
 const Home = () => {
@@ -31,7 +36,7 @@ const Home = () => {
 
   return (
     <GameList variants={fadeIn} initial="hidden" animate="show" exit="exit">
-      <AnimateSharedLayout type="crossfade" exitBeforeEnter>
+      <LayoutGroup type="crossfade" exitBeforeEnter>
         <AnimatePresence>
           {pathID && <GameDetails pathID={pathID} />}
         </AnimatePresence>
@@ -93,7 +98,7 @@ const Home = () => {
             />
           ))}
         </Games>
-      </AnimateSharedLayout>
+      </LayoutGroup>
     </GameList>
   );
 };

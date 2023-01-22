@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 // TODO Redux & Routes
 import { fetchSearch } from "../actions/gamesAction";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 // TODO Styles & animations
 import styled from "styled-components";
@@ -13,6 +13,7 @@ import logo from "../assets/img/logo.svg";
 
 const Nav = () => {
   const dispatch = useDispatch();
+  const { isSearching } = useSelector((state) => state.games);
   const [textInput, setTextInput] = useState("");
 
   const inputHandler = (e) => {
@@ -45,8 +46,8 @@ const Nav = () => {
             name=""
             id=""
           />
-          <button onClick={submitSearch} type="submit">
-            Search
+          <button disabled={isSearching} type="submit" onClick={submitSearch}>
+            {!isSearching ? "Search" : "Wait..."}
           </button>
         </div>
       </form>
@@ -76,12 +77,19 @@ const StyledNav = styled(motion.nav)`
     /* border-radius: 10px; */
   }
   button {
+    cursor: pointer;
+    display: inline-block;
     border: none;
     outline: none;
     font-size: 1.5rem;
     padding: 0.5rem 2rem;
     color: #fff;
     background-color: #ff7676;
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
   }
 
   @media (max-width: 50em) {
