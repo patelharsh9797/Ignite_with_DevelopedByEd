@@ -25,6 +25,7 @@ export const loadGames = () => async (dispatch) => {
 };
 
 export const fetchSearch = (game_name) => async (dispatch) => {
+
   dispatch({
     type: "SEARCHING_GAMES",
   });
